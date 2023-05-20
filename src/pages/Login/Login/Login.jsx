@@ -1,14 +1,26 @@
+import { useContext } from "react";
 import baby from "../../../assets/Logo/baby.jpg";
+import { AuthContext } from "../../../assets/providers/AuthProvider";
+import { Link } from "react-router-dom";
 
 const Login = () => {
-  
-  const handelLogin = (event)=>{
+  const { signIn } = useContext(AuthContext);
+
+  const handelLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
-  }
+
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        // navigate(from, { replace: true })
+      })
+      .catch((error) => console.log(error));
+  };
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content relative">
@@ -53,6 +65,7 @@ const Login = () => {
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>
               </div>
+              <p className='my-4 text-center'>If You New Here <Link className='text-orange-600 font-bold' to="/register">SignUp</Link> </p>
             </form>
           </div>
         </div>
