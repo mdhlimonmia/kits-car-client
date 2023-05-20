@@ -4,7 +4,7 @@ import AllCarCard from "./AllCarCard";
 const AllCar = () => {
     const [cars, setCars] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/cars')
+        fetch('https://kits-car-server.vercel.app/cars')
             .then(res => res.json())
             .then(data => setCars(data));
     }, [])
