@@ -8,11 +8,15 @@ const Navbar = () => {
                 <Link to='/'>Home</Link>
             </li>
             <li>
+                <Link to='/allcar'>All Car</Link>
+            </li>
+            <li>
                 <Link to = '/blogs'>Blogs</Link>
             </li>
             <li>
                 <Link to='/About'>About</Link>
             </li>
+            
         </>
     )
   return (
