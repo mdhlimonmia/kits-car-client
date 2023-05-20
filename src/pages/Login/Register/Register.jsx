@@ -1,36 +1,39 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import baby from "../../../assets/Logo/baby.jpg";
-import { AuthContext } from "../../../assets/providers/AuthProvider";
 import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Register = () => {
-    const { createUser, updateUser } = useContext(AuthContext);
+  const { createUser, updateUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
-    const handelRegister = event =>{
-        event.preventDefault()
-        const form = event.target;
-        const name = form.name.value;
-        const url = form.url.value;
-        const email = form.email.value;
+  const handelRegister = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const url = form.url.value;
+    const email = form.email.value;
 
-        const password = form.password.value;
-        console.log(name, url, email, password);
+    const password = form.password.value;
+    console.log(name, url, email, password);
 
-        createUser(email, password)
-            .then(result => {
-                const user = result.user;
-                console.log('created user', user)
-                updateUser(name, url)
-                .then(result => {
-                    console.log(result);
-                })
-                .catch(error => console.log(error))
-            })
-            .catch(error => console.log(error))
-    
-    }
-    return (
-        <div className="hero min-h-screen bg-base-200">
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log("created user", user);
+        updateUser(name, url)
+          .then((result) => {
+            console.log(result);
+            navigate(from, { replace: true })
+          })
+          .catch((error) => console.log(error));
+      })
+      .catch((error) => console.log(error));
+  };
+  return (
+    <div className="hero min-h-screen bg-base-200">
       <div className="hero-content relative">
         <div className="text-center lg:text-left ">
           <img src={baby} className="rounded-lg from-orange-300" alt="" />
@@ -93,12 +96,17 @@ const Register = () => {
                 <button className="btn btn-primary">SignUp</button>
               </div>
             </form>
-            <p className='my-4 text-center'>Already Have an Account? <Link className='text-orange-600 font-bold' to="/login">Login</Link> </p>
+            <p className="my-4 text-center">
+              Already Have an Account?{" "}
+              <Link className="text-orange-600 font-bold" to="/login">
+                Login
+              </Link>{" "}
+            </p>
           </div>
         </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default Register;
