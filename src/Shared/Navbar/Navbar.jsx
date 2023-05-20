@@ -1,42 +1,52 @@
 import { Link } from "react-router-dom";
-import logo from "../../assets/Logo/Logo.png"
+import logo from "../../assets/Logo/Logo.png";
 import { useContext } from "react";
 import { AuthContext } from "../../assets/providers/AuthProvider";
 
 const Navbar = () => {
-  const {user, logOut} = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
-    const handleLogOut = () => {
-        logOut()
-        .then(() =>{
-            
-        })
-        .catch( error => console.log(error))
-    }
-    const items = (
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+  const items = (
+    <>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/allcar">All Car</Link>
+      </li>
+      <li>
+        <Link to="/blogs">Blogs</Link>
+      </li>
+      <li>
+        <Link to="/About">About</Link>
+      </li>
+      {user?.email ? (
         <>
-            <li>
-                <Link to='/'>Home</Link>
-            </li>
-            <li>
-                <Link to='/allcar'>All Car</Link>
-            </li>
-            <li>
-                <Link to = '/blogs'>Blogs</Link>
-            </li>
-            <li>
-                <Link to='/About'>About</Link>
-            </li>
-            {
-              user?.email ? <>
-                <li> <Link>{user.displayName}</Link>  </li>
-                <li><button onClick={handleLogOut}>LogOut</button></li>
-              </>  :
-              <li><Link to='/login'>Login</Link></li>
-            }
-            
+          <div className="relative  group">
+          <img
+            className="absolute w-14 group-hover:opacity-50"
+            src={user?.photoURL}
+          />
+          <p className=" transition-all transform translate-y-8 opacity-0 group-hover:opacity-100 group-hover:translate-y-10  text-lg text-white">
+            {user?.displayName}
+          </p>
+        </div>
+          <li>
+            <button onClick={handleLogOut}>LogOut</button>
+          </li>
         </>
-    )
+      ) : (
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+      )}
+    </>
+  );
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -61,17 +71,15 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
-           {items}
+            {items}
           </ul>
         </div>
         <Link className="btn btn-ghost normal-case text-xl">
-            <img className="w-16" src={logo} alt="" />
+          <img className="w-16" src={logo} alt="" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          {items}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{items}</ul>
       </div>
       <div className="navbar-end">
         <a className="btn">Get started</a>
