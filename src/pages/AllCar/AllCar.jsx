@@ -12,7 +12,7 @@ const AllCar = () => {
         <div>
             <div className="grid grid-cols-3 gap-10">
                 {
-                    cars.slice(0,10).map(car => <AllCarCard
+                    cars.map(car => <AllCarCard
                         key={car._id}
                         car ={car}
                         ></AllCarCard>)

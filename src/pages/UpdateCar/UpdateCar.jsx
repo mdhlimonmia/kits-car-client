@@ -1,6 +1,14 @@
-const AddCar = () => {
+import { useLoaderData, useNavigate } from "react-router-dom";
 
-    const handleAddCar = event =>{
+
+const UpdateCar = () => {
+
+    const carDetail = useLoaderData()
+    const navigate =useNavigate()
+   
+    
+
+    const handleUpdate = event =>{
         event.preventDefault()
         const form = event.target;
         const name = form.name.value;
@@ -13,7 +21,7 @@ const AddCar = () => {
         const quantity = form.quantity.value;
         const details = form.details.value;
 
-        const newCar = {
+        const updateCar = {
             toy_name: name,
             sub_category: category,
             price: price,
@@ -25,27 +33,25 @@ const AddCar = () => {
             description: details
         }
 
-        fetch('https://kits-car-server.vercel.app/addcar', {
-            method: 'POST', 
+        fetch(`http://localhost:5000/update/${carDetail._id}`, {
+            method: 'PUT', 
             headers: {
                 'content-type': 'application/json'
             }, 
-            body: JSON.stringify(newCar)
+            body: JSON.stringify(updateCar)
         })
         .then(res => res.json())
         .then(data => {
             console.log(data);
-            if(data.insertedId){
-                alert('service book successfully')
-            }
+            
         })
     }
 
 
-  return (
-    <div>
+    return (
+        <div>
       <h2 className="text-center text-3xl">Book Service: </h2>
-      <form onSubmit={handleAddCar}>
+      <form onSubmit={handleUpdate}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="form-control">
             <label className="label">
@@ -125,7 +131,7 @@ const AddCar = () => {
       </form>
       <div className="card-body"></div>
     </div>
-  );
+    );
 };
 
-export default AddCar;
+export default UpdateCar;
