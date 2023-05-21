@@ -12,12 +12,13 @@ const AllCar = () => {
         <div>
             <div className="grid grid-cols-3 gap-10">
                 {
-                    cars.map(car => <AllCarCard
+                    cars.slice(0,10).map(car => <AllCarCard
                         key={car._id}
                         car ={car}
                         ></AllCarCard>)
                 }
             </div>
+            <button> Show More </button>
         </div>
     );
 };

@@ -20,6 +20,9 @@ const Navbar = () => {
       <li>
         <Link to="/allcar">All Car</Link>
       </li>
+        {
+          user?.email ? (<><li><Link to="/mycars">My Cars</Link> </li></>) : (<></>)
+        }
       <li>
         <Link to="/blogs">Blogs</Link>
       </li>
