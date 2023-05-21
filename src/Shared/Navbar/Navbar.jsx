@@ -21,7 +21,10 @@ const Navbar = () => {
         <Link to="/allcar">All Car</Link>
       </li>
         {
-          user?.email ? (<><li><Link to="/mycars">My Cars</Link> </li></>) : (<></>)
+          user?.email ? (<>
+          <li><Link to="/mycars">My Cars</Link> </li>
+          <li><Link to="/addcar">Add A Car</Link> </li>
+          </>) : (<></>)
         }
       <li>
         <Link to="/blogs">Blogs</Link>
@@ -33,10 +36,10 @@ const Navbar = () => {
         <>
           <div className="relative  group">
           <img
-            className="absolute w-14 group-hover:opacity-50"
+            className="absolute w-14 group-hover:opacity-50 rounded-full"
             src={user?.photoURL}
           />
-          <p className=" transition-all transform translate-y-8 opacity-0 group-hover:opacity-100 group-hover:translate-y-10  text-lg text-white">
+          <p className=" text-orange-600 font-bold transition-all transform translate-y-8 opacity-0 group-hover:opacity-100 group-hover:translate-y-10  text-lg">
             {user?.displayName}
           </p>
         </div>

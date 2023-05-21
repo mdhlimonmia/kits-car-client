@@ -7,6 +7,7 @@ import AllCar from "../pages/AllCar/AllCar";
 import Login from "../pages/Login/Login/Login";
 import Register from "../pages/Login/Register/Register";
 import MyCars from "../pages/MyCars/MyCars";
+import AddCar from "../pages/AddCar/AddCar";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: '/mycars',
         element: <MyCars></MyCars>
+      },
+      {
+        path: 'addcar',
+        element: <AddCar></AddCar>
       },
       {
         path: '/blogs',

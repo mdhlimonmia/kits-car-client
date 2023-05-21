@@ -1,20 +1,45 @@
+import { useEffect, useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import 'react-tabs/style/react-tabs.css';
+import "react-tabs/style/react-tabs.css";
+import AllCarCard from "../../AllCar/AllCarCard";
 
 const ToyTab = () => {
+  const [cars, setCars] = useState([]);
+  const [categoryName, setCategoryName] = useState('Regular Car');
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/category/${categoryName}`)
+      .then((res) => res.json())
+      .then((data) => setCars(data));
+  }, [categoryName]);
+
+  console.log(cars);
 
   return (
     <Tabs>
       <TabList>
-        <Tab>Title 1</Tab>
-        <Tab>Title 2</Tab>
+       <div onClick={()=>setCategoryName("Regular Car")}>
+       <Tab>Regular Car</Tab>
+       </div>
+       <div onClick={()=>setCategoryName("Mini Police Car")}>
+       <Tab>Mini Police Car</Tab>
+       </div>
+      
       </TabList>
 
       <TabPanel>
-        <h2>Any content 1</h2>
+        <div className="grid grid-cols-3 gap-10">
+          {cars.slice(0, 3).map((car) => (
+            <AllCarCard key={car._id} car={car}></AllCarCard>
+          ))}
+        </div>
       </TabPanel>
       <TabPanel>
-        <h2>Any content 2</h2>
+        <div className="grid grid-cols-3 gap-10">
+          {cars.slice(4, 7).map((car) => (
+            <AllCarCard key={car._id} car={car}></AllCarCard>
+          ))}
+        </div>
       </TabPanel>
     </Tabs>
   );
