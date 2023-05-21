@@ -1,12 +1,11 @@
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData} from "react-router-dom";
 
 
 const UpdateCar = () => {
 
     const carDetail = useLoaderData()
-    // const navigate =useNavigate()
    
-
+console.log(carDetail);
 
     const handleUpdate = event =>{
         event.preventDefault()
@@ -57,28 +56,28 @@ const UpdateCar = () => {
             <label className="label">
               <span className="label-text">Car Name</span>
             </label>
-            <input type="text" name="name" className="input input-bordered" />
+            <input type="text" name="name" defaultValue={carDetail?.toy_name} className="input input-bordered" />
           </div>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Picture Url</span>
             </label>
-            <input type="text" name="url" className="input input-bordered" />
+            <input type="text" name="url" defaultValue={carDetail?.image} className="input input-bordered" />
           </div>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Your Name</span>
             </label>
-            <input type="text" name="seller" className="input input-bordered" />
+            <input type="text" name="seller" defaultValue={carDetail?.seller_name} className="input input-bordered" />
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Your Email</span>
+              <span className="label-text" >Your Email</span>
             </label>
             <input
               type="text"
               name="email"
-              placeholder="email"
+              defaultValue={carDetail?.seller_email}
               className="input input-bordered"
             />
           </div>
@@ -89,6 +88,7 @@ const UpdateCar = () => {
             <input
               type="text"
               name="category"
+              defaultValue={carDetail?.sub_category}
               className="input input-bordered"
             />
           </div>
@@ -96,13 +96,13 @@ const UpdateCar = () => {
             <label className="label">
               <span className="label-text">Price</span>
             </label>
-            <input type="text" name="price" className="input input-bordered" />
+            <input type="text" name="price" defaultValue={carDetail?.price} className="input input-bordered" />
           </div>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Rating</span>
             </label>
-            <input type="text" name="rating" className="input input-bordered" />
+            <input type="text" name="rating" defaultValue={carDetail?.rating} className="input input-bordered" />
           </div>
           <div className="form-control">
             <label className="label">
@@ -111,6 +111,7 @@ const UpdateCar = () => {
             <input
               type="text"
               name="quantity"
+              defaultValue={carDetail?.available_quantity}
               className="input input-bordered"
             />
           </div>
@@ -119,7 +120,7 @@ const UpdateCar = () => {
           <label className="label">
             <span className="label-text">Detail description</span>
           </label>
-          <input type="text" name="details" className="input input-bordered" />
+          <input type="text" name="details" defaultValue={carDetail?.description} className="input input-bordered" />
         </div>
         <div className="form-control mt-6">
           <input

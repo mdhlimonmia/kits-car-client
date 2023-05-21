@@ -3,11 +3,11 @@ const Footer = () => {
   return (
     <footer className="footer p-8 bg-base-200 text-base-content mt-12">
       <div>
-            <img src={logo} className="w-64" alt="" />
+            <img src={logo} className="w-20 rounded" alt="" />
         <p>
-          ACME Industries Ltd.
+          <samp className="footer-title"> Kits Car</samp>
           <br />
-          Providing reliable tech since 1992
+          Providing reliable product since 2023
         </p>
       </div>
       <div>
@@ -28,7 +28,7 @@ const Footer = () => {
         <span className="footer-title">Legal</span>
         <a className="link link-hover">Terms of use</a>
         <a className="link link-hover">Privacy policy</a>
-        <a className="link link-hover">Cookie policy</a>
+
       </div>
     </footer>
   );

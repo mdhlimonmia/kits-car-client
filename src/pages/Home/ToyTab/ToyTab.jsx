@@ -17,18 +17,29 @@ const ToyTab = () => {
   return (
     <Tabs>
       <TabList>
-       <div onClick={()=>setCategoryName("Regular Car")}>
-       <Tab>Regular Car</Tab>
-       </div>
-       <div onClick={()=>setCategoryName("Mini Police Car")}>
-       <Tab>Mini Police Car</Tab>
-       </div>
-      
+       <Tab onClick={()=>setCategoryName("Regular Car")} >Regular Car</Tab>
+       <Tab onClick={()=>setCategoryName("Mini Police Car")}>Mini Police Car</Tab>
+       <Tab onClick={()=>setCategoryName("Sports Car")}>Sports Car</Tab>
+       <Tab onClick={()=>setCategoryName("Mini Fire Truck")}>Mini Fire Truck</Tab>
       </TabList>
 
       <TabPanel>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {cars.slice(0, 3).map((car) => (
+            <AllCarCard key={car._id} car={car}></AllCarCard>
+          ))}
+        </div>
+      </TabPanel>
+      <TabPanel>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {cars.slice(4, 7).map((car) => (
+            <AllCarCard key={car._id} car={car}></AllCarCard>
+          ))}
+        </div>
+      </TabPanel>
+      <TabPanel>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {cars.slice(4, 7).map((car) => (
             <AllCarCard key={car._id} car={car}></AllCarCard>
           ))}
         </div>

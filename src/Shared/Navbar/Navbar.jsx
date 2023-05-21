@@ -82,7 +82,7 @@ const Navbar = () => {
           </ul>
         </div>
         <Link className="btn btn-ghost normal-case text-xl">
-          <img className="w-16" src={logo} alt="" />
+          <img className="w-16 rounded " src={logo} alt="" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">

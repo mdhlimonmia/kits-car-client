@@ -33,6 +33,7 @@ const AllCar = () => {
 
     return (
         <div>
+            <div className="flex items-center justify-center text-center m-12 font-bold"><h1 className="text-4xl">Our All Product</h1></div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {
                     content
