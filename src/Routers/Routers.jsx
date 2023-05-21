@@ -11,6 +11,7 @@ import AddCar from "../pages/AddCar/AddCar";
 import Details from "../pages/Details/Details";
 import UpdateCar from "../pages/UpdateCar/UpdateCar";
 import PrivetRouter from "../pages/PrivetRouter/PrivetRouter";
+import Error from "../pages/Error/Error";
 
 const router = createBrowserRouter([
   {
@@ -43,8 +44,6 @@ const router = createBrowserRouter([
         path: '/update/:id',
         element: <PrivetRouter><UpdateCar></UpdateCar></PrivetRouter>,
         loader : ({params})=>fetch(`https://kits-car-server.vercel.app/details/${params.id}`)
-  
-        
       },
       {
         path: '/blogs',
@@ -63,6 +62,10 @@ const router = createBrowserRouter([
         element: <Register></Register>
       }
     ],
+  },
+  {
+    path: '*',
+    element: <Error></Error>
   },
 ]);
 
