@@ -12,35 +12,35 @@ const Gallery = () => {
       <h1 className="text-4xl font-bold">Top Collection</h1>
       <p>Out Top latest toy car collection given bellow for easy to choice. Find out a car for your cute baby.</p>
       </div>
-      <div className="grid grid-cols-3 text-center items-center mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-center items-center mx-auto">
         <div className="card card-compact bg-base-100 mb-12 shadow-xl rounded-xl">
           <figure>
-            <img src={g1} alt="Shoes" className="rounded-xl w-[430px] h-80" />
+            <img src={g1} alt="Shoes" className="rounded-xl w-[400px] h-80" />
           </figure>
         </div>
         <div className="card card-compact bg-base-100 mb-12 shadow-xl rounded-xl">
           <figure>
-            <img src={g2} alt="Shoes" className="rounded-xl w-[430px] h-80" />
+            <img src={g2} alt="Shoes" className="rounded-xl w-[400px] h-80" />
           </figure>
         </div>
         <div className="card card-compact bg-base-100 mb-12 shadow-xl rounded-xl">
           <figure>
-            <img src={g3} alt="Shoes" className="rounded-xl w-[430px] h-80" />
+            <img src={g3} alt="Shoes" className="rounded-xl w-[400px] h-80" />
           </figure>
         </div>
         <div className="card card-compact bg-base-100 mb-12 shadow-xl rounded-xl">
           <figure>
-            <img src={g4} alt="Shoes" className="rounded-xl w-[430px] h-80" />
+            <img src={g4} alt="Shoes" className="rounded-xl w-[400px] h-80" />
           </figure>
         </div>
         <div className="card card-compact bg-base-100 mb-12 shadow-xl rounded-xl">
           <figure>
-            <img src={g5} alt="Shoes" className="rounded-xl w-[430px] h-80" />
+            <img src={g5} alt="Shoes" className="rounded-xl w-[400px] h-80" />
           </figure>
         </div>
         <div className="card card-compact bg-base-100 mb-12 shadow-xl rounded-xl">
           <figure>
-            <img src={g6} alt="Shoes" className="rounded-xl w-[430px] h-80" />
+            <img src={g6} alt="Shoes" className="rounded-xl w-[400px] h-80" />
           </figure>
         </div>
       </div>

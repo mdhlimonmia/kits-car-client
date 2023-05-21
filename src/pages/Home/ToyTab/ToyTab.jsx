@@ -27,14 +27,14 @@ const ToyTab = () => {
       </TabList>
 
       <TabPanel>
-        <div className="grid grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {cars.slice(0, 3).map((car) => (
             <AllCarCard key={car._id} car={car}></AllCarCard>
           ))}
         </div>
       </TabPanel>
       <TabPanel>
-        <div className="grid grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {cars.slice(4, 7).map((car) => (
             <AllCarCard key={car._id} car={car}></AllCarCard>
           ))}
