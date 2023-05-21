@@ -27,11 +27,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/mycars',
-        element: <MyCars></MyCars>
+        element: <PrivetRouter><MyCars></MyCars></PrivetRouter>
       },
       {
         path: '/addcar',
-        element: <AddCar></AddCar>
+        element: <PrivetRouter><AddCar></AddCar></PrivetRouter>
       },
       {
         path: '/details/:id',
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/update/:id',
-        element: <UpdateCar />,
+        element: <PrivetRouter><UpdateCar></UpdateCar></PrivetRouter>,
         loader : ({params})=>fetch(`https://kits-car-server.vercel.app/details/${params.id}`)
   
         
