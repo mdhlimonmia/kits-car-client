@@ -8,12 +8,11 @@ const ToyTab = () => {
   const [categoryName, setCategoryName] = useState('Regular Car');
 
   useEffect(() => {
-    fetch(`http://localhost:5000/category/${categoryName}`)
+    fetch(`https://kits-car-server.vercel.app/category/${categoryName}`)
       .then((res) => res.json())
       .then((data) => setCars(data));
   }, [categoryName]);
 
-  console.log(cars);
 
   return (
     <Tabs>

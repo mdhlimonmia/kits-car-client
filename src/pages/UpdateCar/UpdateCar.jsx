@@ -4,9 +4,9 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 const UpdateCar = () => {
 
     const carDetail = useLoaderData()
-    const navigate =useNavigate()
+    // const navigate =useNavigate()
    
-    
+
 
     const handleUpdate = event =>{
         event.preventDefault()
@@ -33,7 +33,7 @@ const UpdateCar = () => {
             description: details
         }
 
-        fetch(`http://localhost:5000/update/${carDetail._id}`, {
+        fetch(`https://kits-car-server.vercel.app/${carDetail._id}`, {
             method: 'PUT', 
             headers: {
                 'content-type': 'application/json'

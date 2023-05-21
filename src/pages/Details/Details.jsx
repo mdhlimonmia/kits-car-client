@@ -1,45 +1,70 @@
+import { useContext } from "react";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Details = () => {
-     const details = useLoaderData()
-     const navigate =useNavigate()
-
-     const handleRemoveItem = (id) => {
-        const deleteConfirm = window.confirm(
-          `Are you sure? You want to delete this item.`
-        );
-        if (deleteConfirm) {
-          fetch(`http://localhost:5000/car/${id}`, {
-            method: "DELETE",
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              if (data.deletedCount > 0) {
-                // toast.success("Review deleted succesfully !!");
-                 alert('success')
-                 navigate('/mycars')
-                 console.log(data);
-              }
-            });
-        }
-      };
+  const { user } = useContext(AuthContext);
+  const details = useLoaderData();
+  const navigate = useNavigate();
+  const {
+    seller_name,
+    toy_name,
+    sub_category,
+    price,
+    available_quantity,
+    image,
+    seller_email,
+    rating,
+    description,
+  } = details;
+  const handleRemoveItem = (id) => {
+    const deleteConfirm = window.confirm(
+      `Are you sure? You want to delete this item.`
+    );
+    if (deleteConfirm) {
+      fetch(`https://kits-car-server.vercel.app/car/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            // toast.success("Review deleted succesfully !!");
+            alert("success");
+            navigate("/mycars");
+            console.log(data);
+          }
+        });
+    }
+  };
 
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row">
-        <img
-          src="/images/stock/photo-1635805737707-575885ab0820.jpg"
-          className="max-w-sm rounded-lg shadow-2xl"
-        />
-        <div>
-          <h1 className="text-5xl font-bold">Box Office News!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
-       <Link  to={`/update/${details._id}`} >    <button className="btn btn-primary">Update</button></Link>
-          <button  onClick={()=>handleRemoveItem(details._id)} className="btn btn-secondary">delete</button>
+        <img src={image} className="max-w-2xl rounded-lg shadow-2xl" />
+        <div className="ml-11">
+          <h1 className="text-5xl font-bold">{toy_name}</h1>
+          <p className="py-1"> {description}</p>
+          <p className="py-1"> {sub_category}</p>
+          <p className="py-1"> {seller_name}</p>
+          <p className="py-1"> {seller_email}</p>
+          <p className="py-1"> {available_quantity}</p>
+          <p className="py-1"> {price}</p>
+          <p className="py-1"> {rating}</p>
+          {seller_email == user?.email && (
+            <>
+              {" "}
+              <Link to={`/update/${details._id}`}>
+                {" "}
+                <button className="btn btn-primary mr-10 ">Update</button>
+              </Link>
+              <button
+                onClick={() => handleRemoveItem(details._id)}
+                className="btn btn-secondary"
+              >
+                delete
+              </button>
+            </>
+          )}
         </div>
       </div>
     </div>
