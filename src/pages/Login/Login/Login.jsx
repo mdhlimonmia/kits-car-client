@@ -2,14 +2,15 @@ import { useContext } from "react";
 import baby from "../../../assets/Logo/baby.jpg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import google from "../../../assets/Logo/google.png";
+import gitHub from "../../../assets/Logo/gitHub.png";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  
-  
+
   const handelLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -21,10 +22,20 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        navigate(from, { replace: true })
+        navigate(from, { replace: true });
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error));  
   };
+  const googeLoging = () => {
+    googleSignIn()
+    .then((result) => {
+      const user = result.user;
+      console.log(user);
+      navigate(from, { replace: true });
+    })
+    .catch((error) => console.log(error));
+}
+
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content relative">
@@ -69,8 +80,20 @@ const Login = () => {
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>
               </div>
-              <p className='my-4 text-center'>If You New Here <Link className='text-orange-600 font-bold' to="/register">SignUp</Link> </p>
+              <p className="my-4 text-center">
+              Do not have an account yet?{" "}
+                <Link className="text-orange-600 font-bold" to="/register">
+                  SignUp
+                </Link>{" "}
+              </p>
             </form>
+            <div>
+              <h3 className="text-xl my-4 text-center font-bold p-5">Or login with-</h3>
+              <div className="flex justify-center ">
+                <img onClick={googeLoging} src={google} className="w-12 rounded-lg mr-12" alt="" />
+                <img src={gitHub} className="w-12 rounded-lg" alt="" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
