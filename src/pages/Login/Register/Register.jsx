@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import baby from "../../../assets/Logo/baby.jpg";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { toast } from "react-hot-toast";
 
 const Register = () => {
   const { createUser, updateUser } = useContext(AuthContext);
@@ -17,20 +18,19 @@ const Register = () => {
     const email = form.email.value;
 
     const password = form.password.value;
-    console.log(name, url, email, password);
 
     createUser(email, password)
       .then((result) => {
-        const user = result.user;
-        console.log("created user", user);
+      
         updateUser(name, url)
           .then((result) => {
-            console.log(result);
+            toast.success("Successfully SignUp!!");
+            
             navigate(from, { replace: true })
           })
-          .catch((error) => console.log(error));
+          .catch((error) => toast.error(error.message));
       })
-      .catch((error) => console.log(error));
+      .catch((error) => toast.error(error.message));
   };
   return (
     <div className="hero min-h-screen bg-base-200">

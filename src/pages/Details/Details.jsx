@@ -31,7 +31,7 @@ const Details = () => {
             // toast.success("Review deleted succesfully !!");
             alert("success");
             navigate("/mycars");
-            console.log(data);
+            // console.log(data);
           }
         });
     }
@@ -42,14 +42,16 @@ const Details = () => {
       <div className="hero-content flex-col lg:flex-row">
         <img src={image} className="max-w-2xl rounded-lg shadow-2xl" />
         <div className="ml-11">
-          <h1 className="text-5xl font-bold">{toy_name}</h1>
-          <p className="py-1"> {description}</p>
-          <p className="py-1"> {sub_category}</p>
-          <p className="py-1"> {seller_name}</p>
-          <p className="py-1"> {seller_email}</p>
-          <p className="py-1"> {available_quantity}</p>
-          <p className="py-1"> {price}</p>
-          <p className="py-1"> {rating}</p>
+          <div className="text-xl space-y-5">
+          <h1 className="text-5xl font-bold">Car Name: {toy_name}</h1>
+          <p className="py-1"> Details: {description}</p>
+          <p className="py-1"> Category: {sub_category}</p>
+          <p className="py-1"> Seller Name: {seller_name}</p>
+          <p className="py-1"> Seller Email: {seller_email}</p>
+          <p className="py-1"> Available Quantity: {available_quantity}</p>
+          <p className="py-1"> Price: ${price}</p>
+          <p className="py-1"> Rating: {rating}</p>
+          </div>
           {seller_email == user?.email && (
             <>
               {" "}

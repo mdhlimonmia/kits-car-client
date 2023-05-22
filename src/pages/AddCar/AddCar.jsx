@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import { toast } from "react-hot-toast";
+import { AuthContext } from "../../providers/AuthProvider";
+
 const AddCar = () => {
+  const {user} = useContext(AuthContext)
 
     const handleAddCar = event =>{
         event.preventDefault()
@@ -34,9 +39,9 @@ const AddCar = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
             if(data.insertedId){
-                alert('service book successfully')
+                toast.success('Successfully add Car');
             }
         })
     }
@@ -44,7 +49,7 @@ const AddCar = () => {
 
   return (
     <div>
-      <h2 className="text-center text-3xl">Book Service: </h2>
+      <h2 className="text-center text-3xl mt-8">Add Car</h2>
       <form onSubmit={handleAddCar}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="form-control">
@@ -72,8 +77,10 @@ const AddCar = () => {
             <input
               type="text"
               name="email"
-              placeholder="email"
+              defaultValue={user?.email}
+
               className="input input-bordered"
+              required
             />
           </div>
           <div className="form-control">

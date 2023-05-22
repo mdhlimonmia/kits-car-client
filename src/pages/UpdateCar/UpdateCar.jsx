@@ -1,3 +1,4 @@
+import { toast } from "react-hot-toast";
 import { useLoaderData} from "react-router-dom";
 
 
@@ -5,7 +6,7 @@ const UpdateCar = () => {
 
     const carDetail = useLoaderData()
    
-console.log(carDetail);
+// console.log(carDetail);
 
     const handleUpdate = event =>{
         event.preventDefault()
@@ -41,8 +42,8 @@ console.log(carDetail);
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
-            
+            // console.log(data);
+            toast.success("Successfully Updated")
         })
     }
 
@@ -79,6 +80,7 @@ console.log(carDetail);
               name="email"
               defaultValue={carDetail?.seller_email}
               className="input input-bordered"
+              required
             />
           </div>
           <div className="form-control">

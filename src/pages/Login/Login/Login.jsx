@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import google from "../../../assets/Logo/google.png";
 import gitHub from "../../../assets/Logo/gitHub.png";
+import toast from 'react-hot-toast';
 
 const Login = () => {
   const { signIn, googleSignIn } = useContext(AuthContext);
@@ -16,26 +17,27 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    // console.log(email, password);
 
     signIn(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
+        toast.success("Successfully Login");
         navigate(from, { replace: true });
       })
-      .catch((error) => console.log(error));  
+      .catch((error) => toast.error(error.message));  
   };
   const googeLoging = () => {
     googleSignIn()
     .then((result) => {
       const user = result.user;
-      console.log(user);
+      toast.success("Successfully Login");
+      // console.log(user);
       navigate(from, { replace: true });
     })
-    .catch((error) => console.log(error));
+    .catch((error) => toast.error(error.message));
 }
-
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content relative">
